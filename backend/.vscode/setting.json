@@ -1,0 +1,9 @@
+{
+    "python.defaultInterpreterPath": "/Users/medhavi/Desktop/Learn/GNAApp/backend/venv/bin/python",
+    "python.pythonPath": "/Users/medhavi/Desktop/Learn/GNAApp/backend/venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.analysis.extraPaths": [
+        "/Users/medhavi/Desktop/Learn/GNAApp/backend/venv/lib/python3.13/site-packages"
+    ]
+}
