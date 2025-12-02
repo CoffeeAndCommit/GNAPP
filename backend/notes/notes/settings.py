@@ -29,9 +29,17 @@ DEBUG = True
 ALLOWED_HOSTS = [  "gnapp.onrender.com",
     os.environ.get("RENDER_EXTERNAL_HOSTNAME"),
     "localhost",
+    "http://localhost:60794/#/"
     "127.0.0.1",]
 
-CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:60794/#/",
+    "http://127.0.0.1:60794/#/",
+    "https://gnapp.onrender.com",
+    "https://gnapp.onrender.com/#/",
+]
 
 # Application definition
 
