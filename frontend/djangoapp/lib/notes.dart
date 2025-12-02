@@ -1,55 +1,31 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
+class Note {
+  final int id;
+  final String body;
+  final DateTime updated;
+  final DateTime created;
 
-class Notes {
-  int id;
-  String note;
-  
-  Notes({
+  Note({
     required this.id,
-    required this.note,
+    required this.body,
+    required this.updated,
+    required this.created,
   });
 
-  Notes copyWith({
-    int? id,
-    String? note,
-  }) {
-    return Notes(
-      id: id ?? this.id,
-      note: note ?? this.note,
+  factory Note.fromJson(Map<String, dynamic> json) {
+    return Note(
+      id: json['id'],
+      body: json['body'],
+      updated: DateTime.parse(json['updated']),
+      created: DateTime.parse(json['created']),
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+  Map<String, dynamic> toJson() {
+    return {
       'id': id,
-      'note': note,
+      'body': body,
+      'updated': updated.toIso8601String(),
+      'created': created.toIso8601String(),
     };
   }
-
-  factory Notes.fromMap(Map<String, dynamic> map) {
-    return Notes(
-      id: map['id'] as int,
-      note: map['note'] as String,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Notes.fromJson(String source) => Notes.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() => 'Notes(id: $id, note: $note)';
-
-  @override
-  bool operator ==(covariant Notes other) {
-    if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.note == note;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ note.hashCode;
 }

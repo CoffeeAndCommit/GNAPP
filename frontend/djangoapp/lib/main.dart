@@ -35,13 +35,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Client client = Client();
-  List<Notes> notes = [];
+  List<Note> notes = [];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _retrieveNotes();
+    // print(notes.length);
   }
 
   void _addNote() {
@@ -51,8 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // Logic to retrieve notes from the server
 
     List<dynamic> data = await hf.getNotes();
+    print('Type of data: ${data.runtimeType}');
     for (var note in data) {
-      notes.add(Notes(id: note['id'], note: note['note']));
+      notes.add(Note.fromJson(note));
     }
   }
 
